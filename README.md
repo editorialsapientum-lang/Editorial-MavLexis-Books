@@ -41,7 +41,7 @@ Toda la información de los libros vive en un solo archivo:
 js/data.js
 ```
 
-Ábrelo con el Bloc de notas, Notepad++, o cualquier editor de texto simple (evita Word). Los 21 libros ya están cargados con los datos reales que nos compartiste en la plantilla de Excel (título, autores, fecha, editorial, categoría, sinopsis, ISBN y enlace de Amazon).
+Ábrelo con el Bloc de notas, Notepad++, o cualquier editor de texto simple (evita Word). Los 20 libros ya están cargados con los datos reales que nos compartiste en la plantilla de Excel (título, autores, fecha, editorial, categoría, sinopsis, ISBN y enlace de Amazon).
 
 Para **agregar un libro nuevo**:
 1. Copia uno de los bloques que empieza con `{` y termina con `},`
@@ -82,9 +82,9 @@ Antes de anunciar el sitio, revisa estos puntos:
 - **Correos y teléfono**: en `js/main.js` (pie de página) y en `contacto.html` aparecen datos de ejemplo (`info@mavlexisbooks.com`, `+507 0000-0000`). Reemplázalos por los datos reales de la editorial.
 - **Redes sociales**: los íconos de Facebook / Instagram / WhatsApp en el pie de página apuntan a `#` (sin destino). Edita los enlaces en `js/main.js`, dentro de la función `renderFooter()`.
 - **Título y autor de cada libro**: ya provienen directamente de la plantilla de Excel que llenaste, así que son los datos oficiales. Aun así, dale un vistazo rápido a `js/data.js` para confirmar que todo se vea bien (algunos títulos que venían en MAYÚSCULAS en el Excel los convertí a un formato más legible; verifica que no se haya alterado ningún nombre propio).
-- **Portadas 8 y 17**: ambas corresponden al mismo libro, "Gestión y Dirección del Capital Humano" (según tu plantilla, con la misma fecha e ISBN). Si es un duplicado, borra uno de los dos bloques completos en `js/data.js`; si en realidad son dos ediciones distintas, dínoslo y ajustamos los datos para diferenciarlas.
+- **Portadas 8 y 17**: eran el mismo libro duplicado ("Gestión y Dirección del Capital Humano", misma fecha e ISBN). Ya eliminé el duplicado (libro-017) del catálogo; solo queda una vez, con la portada 8.
 - **Catálogo de Sapientum**: por ahora solo un libro está marcado como Sapientum (`libro-001`, "Administración: Fundamentos básicos") — el resto están bajo MavLexis Books, tal como indica tu plantilla. En cuanto tengas más títulos de Sapientum, agrégalos siguiendo el paso 3.
-- **ISBN y enlaces de Amazon**: ya están cargados para los 21 libros según tu plantilla. Si el ISBN de algún libro cambia o consigues uno nuevo, actualízalo directamente en `js/data.js`.
+- **ISBN y enlaces de Amazon**: ya están cargados para los 20 libros según tu plantilla. Si el ISBN de algún libro cambia o consigues uno nuevo, actualízalo directamente en `js/data.js`.
 
 ---
 

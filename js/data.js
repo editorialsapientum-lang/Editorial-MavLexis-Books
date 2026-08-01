@@ -23,7 +23,7 @@
    - portada:   nombre del archivo de imagen dentro de assets/portadas/
    - sinopsis:  descripción del libro
    - amazon:    enlace de compra en Amazon (o "" si no aplica)
-   - destacado: true / false  → true = aparece en "Novedades" de la portada
+   - destacado: false / false  → true = aparece en "Novedades" de la portada
    - disponible: true / false → false = "Próximamente"
 
    Para AGREGAR una categoría nueva, súmala también al arreglo CATEGORIAS.
@@ -60,7 +60,7 @@ const LIBROS = [
     portada: "Portada-1.jpg",
     sinopsis: "La administración ha existido siempre, desde los inicios de las diferentes civilizaciones y épocas, siendo aplicada y tomando en consideración sus principios básicos, como lo son la planificación, organización, dirección, coordinación y el control, aspectos fundamentales para asegurar el éxito empresarial en cualquier empresa, negocio o emprendimiento, independientemente del área o sector en que se desarrolle.",
     amazon: "https://www.amazon.com/dp/B0GQHV1T4Z",
-    destacado: true,
+    destacado: false,
     disponible: true
   },
   {
@@ -75,7 +75,7 @@ const LIBROS = [
     portada: "Portada-2.jpg",
     sinopsis: "La transformación constante de la sociedad contemporánea exige excelencia en los procesos educativos y sus resultados. La educación, en su papel de proceso para el crecimiento integral del ser humano, ejerce un relevante efecto social en la evolución de las comunidades y se manifiesta en la calidad de vida, ya que aporta al proceso de transformación y desarrollo de la conciencia humana.",
     amazon: "https://www.amazon.com/dp/B0GRPZB4NJ",
-    destacado: false,
+    destacado: true,
     disponible: true
   },
   {
@@ -90,7 +90,7 @@ const LIBROS = [
     portada: "Portada-3.jpg",
     sinopsis: "La historia de los pueblos está hecha de voces, de luchas y de silencios. Luchas que marcaron generaciones enteras; y silencios impuestos por el miedo, la represión o el olvido. El comunismo en Veraguas forma parte de esa memoria colectiva que durante años permaneció fragmentada, dispersa en relatos orales, en viejos periódicos amarillentos o en la memoria de campesinos que aún recuerdan los días de organización, resistencia y esperanza.",
     amazon: "https://www.amazon.com/dp/B0GXTW26JX",
-    destacado: true,
+    destacado: false,
     disponible: true
   },
   {
@@ -105,7 +105,7 @@ const LIBROS = [
     portada: "Portada-4.jpg",
     sinopsis: "Comunicar es, quizás, el acto más humano que existe. Antes de que existieran las letras, las instituciones o los códigos escritos, los seres humanos ya se miraban, se tocaban, se gesticulaban y se hablaban. La comunicación no llegó después de la humanidad; llegó con ella, como parte inseparable de su esencia.",
     amazon: "https://www.amazon.com/dp/B0H1X78LHD",
-    destacado: false,
+    destacado: true,
     disponible: true
   },
   {
@@ -135,7 +135,7 @@ const LIBROS = [
     portada: "Portada-6.jpg",
     sinopsis: "¿Qué hace que un cuidado sea verdaderamente bueno? Esta obra parte de esa pregunta y construye, capítulo a capítulo, una respuesta sólida y actual: desde los principios de la ética administrativa hasta los fundamentos filosóficos que Aristóteles y Kant legaron al pensamiento moral.",
     amazon: "https://www.amazon.com/dp/B0HBM31QKG",
-    destacado: true,
+    destacado: false,
     disponible: true
   },
   {
@@ -165,7 +165,7 @@ const LIBROS = [
     portada: "Portada-8.jpg",
     sinopsis: "La gestión de las personas dentro de las organizaciones ha experimentado, en las últimas dos décadas, una transformación tan profunda como acelerada. Lo que durante buena parte del siglo XX se concibió como una función eminentemente administrativa (el manejo de nóminas, expedientes y trámites laborales) se ha convertido hoy en uno de los pilares estratégicos sobre los que se construye la competitividad de las empresas. Hablar de Gestión y Dirección del Capital Humano es hablar, en definitiva, de la capacidad de una organización para atraer, organizar, conservar, desarrollar y controlar el talento que hace posible la consecución de sus objetivos.",
     amazon: "https://www.amazon.com/dp/B0HBNJKKLK",
-    destacado: false,
+    destacado: true,
     disponible: true
   },
   {
@@ -255,7 +255,7 @@ const LIBROS = [
     portada: "Portada-14.jpg",
     sinopsis: "\"Gestión Integral del Transporte: Seguridad Vial como Ventaja Competitiva en Logística\" es una guía esencial para académicos, profesionales y líderes empresariales que buscan integrar la seguridad vial y la eficiencia logística en sus operaciones.",
     amazon: "https://www.amazon.com/dp/B0FD8PT5LM",
-    destacado: false,
+    destacado: true,
     disponible: true
   },
   {
@@ -270,7 +270,7 @@ const LIBROS = [
     portada: "Portada-15.jpg",
     sinopsis: "En un entorno empresarial de cambio acelerado, las PyMEs enfrentan el desafío de transformar sus operaciones o perder competitividad. \"Cadenas de Suministro Inteligentes\" ofrece un marco práctico para navegar hacia la transformación digital, integrando inteligencia artificial, análisis de datos y automatización en las operaciones logísticas.",
     amazon: "https://www.amazon.com/dp/B0FD8NNKDM",
-    destacado: true,
+    destacado: false,
     disponible: true
   },
   {
@@ -289,21 +289,6 @@ const LIBROS = [
     disponible: true
   },
   {
-    id: "libro-017",
-    titulo: "Gestión y Dirección del Capital Humano Fundamentos, Procesos y Transformación Digital para la Administración Estratégica de las Personas en las Organizaciones",
-    autores: ["Pompilio Alexis Campos Portugal"],
-    sello: "MavLexis Books",
-    categoria: "administrativas",
-    fecha: "26/07/2026",
-    anio: 2026,
-    isbn: "979-8189181771",
-    portada: "Portada-17.jpg",
-    sinopsis: "La gestión de las personas dentro de las organizaciones ha experimentado, en las últimas dos décadas, una transformación tan profunda como acelerada. Lo que durante buena parte del siglo XX se concibió como una función eminentemente administrativa (el manejo de nóminas, expedientes y trámites laborales) se ha convertido hoy en uno de los pilares estratégicos sobre los que se construye la competitividad de las empresas. Hablar de Gestión y Dirección del Capital Humano es hablar, en definitiva, de la capacidad de una organización para atraer, organizar, conservar, desarrollar y controlar el talento que hace posible la consecución de sus objetivos.",
-    amazon: "https://www.amazon.com/dp/B0HBNJKKLK",
-    destacado: false,
-    disponible: true
-  },
-  {
     id: "libro-018",
     titulo: "Comunicación Social, Medios y Sociedad. Bases Teóricas para la Comprensión del Proceso Comunicativo",
     autores: ["Angélica M. Marín B."],
@@ -315,7 +300,7 @@ const LIBROS = [
     portada: "Portada-18.jpg",
     sinopsis: "La comunicación es, sin lugar a duda, el fenómeno más constitutivo de la condición humana. No existe civilización, cultura ni forma de organización social que no se articule, se sostenga y se transforme a través del acto de comunicar.",
     amazon: "https://www.amazon.com/dp/B0H1XHZ3CX",
-    destacado: true,
+    destacado: false,
     disponible: true
   },
   {
@@ -345,7 +330,7 @@ const LIBROS = [
     portada: "Portada-20.jpg",
     sinopsis: "En un mundo donde la globalización, la digitalización y la sostenibilidad son los motores del cambio, las operaciones empresariales y la logística se han consolidado como pilares fundamentales para la competitividad y el éxito de las organizaciones.",
     amazon: "https://www.amazon.com/dp/B0DRCDSM12",
-    destacado: true,
+    destacado: false,
     disponible: true
   },
   {
@@ -360,7 +345,7 @@ const LIBROS = [
     portada: "Portada-21.jpg",
     sinopsis: "Esta guía surge de una necesidad real compartida en el ámbito universitario: ofrecer una herramienta práctica y accesible para estudiantes que enfrentan el desafío de desarrollar su trabajo de graduación. Con lenguaje sencillo y ejemplos concretos extraídos de la experiencia docente, la obra presenta los pasos fundamentales del método científico aplicados a la investigación académica.",
     amazon: "https://www.amazon.com/dp/B0FYQZZT87",
-    destacado: true,
+    destacado: false,
     disponible: true
   },
 ];
