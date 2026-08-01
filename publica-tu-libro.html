@@ -17,7 +17,7 @@
   <div class="wrap nav">
     <a href="index.html" class="brand">
       <img src="assets/img/logo-mark.png" alt="Editorial MavLexis Books">
-      <div class="brand-text">MavLexis<span>Editorial Books</span></div>
+      <div class="brand-text">Editorial MavLexis Books<span>Casa Editorial Universitaria</span></div>
     </a>
     <nav class="nav-links" id="navLinks">
       <a href="index.html">Inicio</a>
@@ -122,7 +122,7 @@
     </div>
 
     <div class="form-card reveal" style="max-width:760px; margin:0 auto;">
-      <form name="postulacion-libro" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+      <form name="postulacion-libro" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/gracias-publicacion.html">
         <input type="hidden" name="form-name" value="postulacion-libro">
         <p style="display:none;"><label>No llenar: <input name="bot-field"></label></p>
 
@@ -154,15 +154,6 @@
           <label for="area">Área del conocimiento</label>
           <select id="area" name="area">
             <option value="">Selecciona un área</option>
-            <option>Administración y Negocios</option>
-            <option>Logística y Operaciones</option>
-            <option>Transporte y Seguridad Vial</option>
-            <option>Ingeniería</option>
-            <option>Ciencias de la Salud</option>
-            <option>Educación</option>
-            <option>Ciencias Sociales e Historia</option>
-            <option>Metodología de la Investigación</option>
-            <option>Comunicación</option>
             <option>Otra</option>
           </select>
         </div>
@@ -174,6 +165,12 @@
           <input type="checkbox" id="autoria" name="autoria" required>
           <label for="autoria" style="margin:0;">Confirmo que el manuscrito es de mi autoría (o de mi equipo) y es un contenido original e inédito.</label>
         </div>
+
+        <div class="manuscript-note">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 4h16v16H4z"/><path d="M4 6l8 7 8-7"/></svg>
+          <p><b>Este formulario es solo el primer contacto</b> — todavía no envíes el manuscrito aquí. Una vez que lo recibamos, te escribiremos a tu correo con los siguientes pasos, y deberás enviar el archivo completo de tu manuscrito a <b>mavlexisbooks@gmail.com</b>, indicando tu nombre y el título de tu obra en el asunto.</p>
+        </div>
+
         <button type="submit" class="btn btn-gold">Enviar postulación</button>
       </form>
     </div>
@@ -187,6 +184,16 @@
 <script>
   renderFooter();
   initReveal();
+
+  // Llenamos el selector de "Área del conocimiento" con las categorías
+  // reales del sitio (js/data.js), para que nunca quede desactualizado.
+  const areaSelect = document.getElementById('area');
+  const otraOption = areaSelect.querySelector('option:last-child');
+  CATEGORIAS.forEach(c => {
+    const opt = document.createElement('option');
+    opt.textContent = c.nombre;
+    areaSelect.insertBefore(opt, otraOption);
+  });
 </script>
 </body>
 </html>

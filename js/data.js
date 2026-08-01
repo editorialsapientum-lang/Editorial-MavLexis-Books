@@ -12,7 +12,7 @@
    a generar este archivo.
 
    CAMPOS DE CADA LIBRO:
-   - id:        código único, sin espacios (ej: "libro-022")
+   - id:        código único, sin espacios (ej: "libro-021")
    - titulo:    título del libro
    - autores:   lista de autores, entre corchetes y comillas
    - sello:     "MavLexis Books"  ó  "Sapientum"
@@ -23,23 +23,25 @@
    - portada:   nombre del archivo de imagen dentro de assets/portadas/
    - sinopsis:  descripción del libro
    - amazon:    enlace de compra en Amazon (o "" si no aplica)
-   - destacado: false / false  → true = aparece en "Novedades" de la portada
+   - destacado: true / false  → true = aparece en "Novedades" de la portada
    - disponible: true / false → false = "Próximamente"
 
    Para AGREGAR una categoría nueva, súmala también al arreglo CATEGORIAS.
    ========================================================================= */
 
 const CATEGORIAS = [
-  { slug: "derecho",            nombre: "Derecho" },
-  { slug: "administrativas",    nombre: "Ciencias Administrativas" },
-  { slug: "logistica",          nombre: "Operaciones y Logística" },
-  { slug: "cadena-suministros", nombre: "Cadena de Suministros" },
-  { slug: "salud",              nombre: "Ciencias de la Salud" },
-  { slug: "sociales",           nombre: "Ciencias Sociales" },
-  { slug: "tecnologia",         nombre: "Tecnología" },
-  { slug: "educacion",          nombre: "Educación" },
-  { slug: "humanidades",        nombre: "Humanidades" },
-  { slug: "comunicacion",       nombre: "Comunicación Social" },
+  { slug: "derecho",               nombre: "Derecho" },
+  { slug: "administrativas",       nombre: "Ciencias Administrativas" },
+  { slug: "naturales",             nombre: "Ciencias Naturales" },
+  { slug: "logistica",             nombre: "Operaciones y Logística" },
+  { slug: "cadena-suministros",    nombre: "Cadena de Suministros" },
+  { slug: "salud",                 nombre: "Ciencias de la Salud" },
+  { slug: "sociales",              nombre: "Ciencias Sociales" },
+  { slug: "tecnologia",            nombre: "Tecnología" },
+  { slug: "tecnologia-innovacion", nombre: "Tecnología e Innovación" },
+  { slug: "educacion",             nombre: "Educación" },
+  { slug: "humanidades",           nombre: "Humanidades" },
+  { slug: "comunicacion",          nombre: "Comunicación Social" },
 ];
 
 const SELLOS = [
@@ -68,7 +70,7 @@ const LIBROS = [
     titulo: "El Currículo: Su Relación con el Diseño y la Planificación Curricular",
     autores: ["Irasema Margarita Vega de Martínez"],
     sello: "MavLexis Books",
-    categoria: "administrativas",
+    categoria: "educacion",
     fecha: "27/02/2027",
     anio: 2027,
     isbn: "979-8250839723",
@@ -96,9 +98,9 @@ const LIBROS = [
   {
     id: "libro-004",
     titulo: "El Poder de Comunicar para el Éxito Personal y Profesional",
-    autores: ["Angélica M. Marín B. Marín B."],
+    autores: ["Angélica M. Marín B."],
     sello: "MavLexis Books",
-    categoria: "humanidades",
+    categoria: "comunicacion",
     fecha: "15/05/2027",
     anio: 2027,
     isbn: "979-8258600424",
@@ -113,14 +115,14 @@ const LIBROS = [
     titulo: "Resolución de Problemas Propuestos de Geometría Euclidiana",
     autores: ["Leonel Sandoval M."],
     sello: "MavLexis Books",
-    categoria: "administrativas",
+    categoria: "naturales",
     fecha: "06/02/2026",
     anio: 2026,
     isbn: "979-8196967313",
     portada: "Portada-5.jpg",
     sinopsis: "La geometría euclidiana ha ocupado, históricamente, un lugar fundamental en la formación matemática, no solo por el rigor lógico que exige, sino también por su capacidad para desarrollar en el estudiante habilidades de análisis, razonamiento y demostración. En el ámbito universitario, particularmente en la formación de futuros profesionales de las matemáticas, la comprensión de los conceptos geométricos constituye una base indispensable para el desarrollo de estructuras más avanzadas del pensamiento matemático.",
     amazon: "https://www.amazon.com/dp/B0H3ST2RX8",
-    destacado: false,
+    destacado: true,
     disponible: true
   },
   {
@@ -128,14 +130,14 @@ const LIBROS = [
     titulo: "Aspectos Éticos, Legales, y Humanístico: Elementos Claves en la Gestión del Cuidado de Enfermería",
     autores: ["Orlinda Esther A. De Batista", "Argelis Espinoza Cruz"],
     sello: "MavLexis Books",
-    categoria: "humanidades",
+    categoria: "salud",
     fecha: "25/07/2026",
     anio: 2026,
     isbn: "979-8188707309",
     portada: "Portada-6.jpg",
     sinopsis: "¿Qué hace que un cuidado sea verdaderamente bueno? Esta obra parte de esa pregunta y construye, capítulo a capítulo, una respuesta sólida y actual: desde los principios de la ética administrativa hasta los fundamentos filosóficos que Aristóteles y Kant legaron al pensamiento moral.",
     amazon: "https://www.amazon.com/dp/B0HBM31QKG",
-    destacado: false,
+    destacado: true,
     disponible: true
   },
   {
@@ -150,7 +152,7 @@ const LIBROS = [
     portada: "Portada-7.jpg",
     sinopsis: "La ingeniería de métodos de trabajo constituye una de las disciplinas más antiguas y, al mismo tiempo, más vigentes dentro de la ingeniería industrial. Desde los primeros estudios de Frederick Taylor y los esposos Gilbreth hasta las aplicaciones contemporáneas de inteligencia artificial y realidad aumentada en el diseño de puestos de trabajo, esta disciplina ha demostrado una notable capacidad de adaptación a los cambios tecnológicos, sociales y económicos que han transformado la manera en que las organizaciones producen bienes y prestan servicios.",
     amazon: "https://www.amazon.com/dp/B0H96Y31VF",
-    destacado: false,
+    destacado: true,
     disponible: true
   },
   {
@@ -165,7 +167,7 @@ const LIBROS = [
     portada: "Portada-8.jpg",
     sinopsis: "La gestión de las personas dentro de las organizaciones ha experimentado, en las últimas dos décadas, una transformación tan profunda como acelerada. Lo que durante buena parte del siglo XX se concibió como una función eminentemente administrativa (el manejo de nóminas, expedientes y trámites laborales) se ha convertido hoy en uno de los pilares estratégicos sobre los que se construye la competitividad de las empresas. Hablar de Gestión y Dirección del Capital Humano es hablar, en definitiva, de la capacidad de una organización para atraer, organizar, conservar, desarrollar y controlar el talento que hace posible la consecución de sus objetivos.",
     amazon: "https://www.amazon.com/dp/B0HBNJKKLK",
-    destacado: true,
+    destacado: false,
     disponible: true
   },
   {
@@ -203,7 +205,7 @@ const LIBROS = [
     titulo: "Relaciones Públicas y Coaching, La Clave para el Éxito Empresarial",
     autores: ["Mavis Beli González Tejedor"],
     sello: "MavLexis Books",
-    categoria: "sociales",
+    categoria: "comunicacion",
     fecha: "02/03/2025",
     anio: 2025,
     isbn: "979-8321771587",
@@ -255,7 +257,7 @@ const LIBROS = [
     portada: "Portada-14.jpg",
     sinopsis: "\"Gestión Integral del Transporte: Seguridad Vial como Ventaja Competitiva en Logística\" es una guía esencial para académicos, profesionales y líderes empresariales que buscan integrar la seguridad vial y la eficiencia logística en sus operaciones.",
     amazon: "https://www.amazon.com/dp/B0FD8PT5LM",
-    destacado: true,
+    destacado: false,
     disponible: true
   },
   {
@@ -289,7 +291,7 @@ const LIBROS = [
     disponible: true
   },
   {
-    id: "libro-018",
+    id: "libro-017",
     titulo: "Comunicación Social, Medios y Sociedad. Bases Teóricas para la Comprensión del Proceso Comunicativo",
     autores: ["Angélica M. Marín B."],
     sello: "MavLexis Books",
@@ -297,29 +299,29 @@ const LIBROS = [
     fecha: "15/05/2026",
     anio: 2026,
     isbn: "979-8259040397",
-    portada: "Portada-18.jpg",
+    portada: "Portada-17.jpg",
     sinopsis: "La comunicación es, sin lugar a duda, el fenómeno más constitutivo de la condición humana. No existe civilización, cultura ni forma de organización social que no se articule, se sostenga y se transforme a través del acto de comunicar.",
     amazon: "https://www.amazon.com/dp/B0H1XHZ3CX",
     destacado: false,
     disponible: true
   },
   {
-    id: "libro-019",
+    id: "libro-018",
     titulo: "De la Reacción a la Prevención: El Enfoque Sistémico en Seguridad Vial",
     autores: ["Pompilio Alexis Campos Portugal", "Mavis Beli González Tejedor"],
     sello: "MavLexis Books",
-    categoria: "sociales",
+    categoria: "educacion",
     fecha: "14/09/2025",
     anio: 2025,
     isbn: "979-8282413052",
-    portada: "Portada-19.jpg",
+    portada: "Portada-18.jpg",
     sinopsis: "La siniestralidad vial constituye uno de los flagelos más apremiantes de la sociedad contemporánea, representando no solo una crisis persistente de salud pública a escala global, sino también un considerable lastre para el desarrollo socioeconómico y el bienestar humano.",
     amazon: "https://www.amazon.com/dp/B0FR4XR2BY",
     destacado: false,
     disponible: true
   },
   {
-    id: "libro-020",
+    id: "libro-019",
     titulo: "Gestión Estratégica en Operaciones y Logística Empresarial",
     autores: ["Pompilio Alexis Campos Portugal"],
     sello: "MavLexis Books",
@@ -327,14 +329,14 @@ const LIBROS = [
     fecha: "23/12/2024",
     anio: 2024,
     isbn: "979-8304592789",
-    portada: "Portada-20.jpg",
+    portada: "Portada-19.jpg",
     sinopsis: "En un mundo donde la globalización, la digitalización y la sostenibilidad son los motores del cambio, las operaciones empresariales y la logística se han consolidado como pilares fundamentales para la competitividad y el éxito de las organizaciones.",
     amazon: "https://www.amazon.com/dp/B0DRCDSM12",
     destacado: false,
     disponible: true
   },
   {
-    id: "libro-021",
+    id: "libro-020",
     titulo: "Guía Metodológica para Presentar Trabajos de Graduación o Investigación",
     autores: ["Janeth Brugiatti Díaz"],
     sello: "MavLexis Books",
@@ -342,7 +344,7 @@ const LIBROS = [
     fecha: "27/10/2025",
     anio: 2025,
     isbn: "979-8264674563",
-    portada: "Portada-21.jpg",
+    portada: "Portada-20.jpg",
     sinopsis: "Esta guía surge de una necesidad real compartida en el ámbito universitario: ofrecer una herramienta práctica y accesible para estudiantes que enfrentan el desafío de desarrollar su trabajo de graduación. Con lenguaje sencillo y ejemplos concretos extraídos de la experiencia docente, la obra presenta los pasos fundamentales del método científico aplicados a la investigación académica.",
     amazon: "https://www.amazon.com/dp/B0FYQZZT87",
     destacado: false,

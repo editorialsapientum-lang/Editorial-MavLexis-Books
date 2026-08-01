@@ -60,8 +60,8 @@ function renderFooter(){
         <div>
           <h4>Contacto</h4>
           <ul>
-            <li>info@mavlexisbooks.com</li>
-            <li>+507 0000-0000</li>
+            <li>mavlexisbooks@gmail.com</li>
+            <li>+507 6594-3848</li>
             <li>Panamá</li>
             <li><a href="contacto.html">Enviar un mensaje →</a></li>
           </ul>

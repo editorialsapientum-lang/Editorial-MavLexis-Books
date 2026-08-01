@@ -28,8 +28,20 @@ Las páginas **Contacto** y **Publica tu libro** usan **Netlify Forms**, que ya 
 
 - No necesitas configurar nada: apenas subas el sitio, Netlify detecta los formularios automáticamente.
 - Los mensajes que envíen los visitantes llegarán al panel de Netlify: **Site → Forms**.
-- Para recibir los mensajes también por correo: **Site settings → Forms → Form notifications → Add notification → Email notification**, y coloca el correo donde quieras recibirlos.
+- Para recibir los mensajes también por correo: **Site settings → Forms → Form notifications → Add notification → Email notification**, y coloca `mavlexisbooks@gmail.com` (el correo oficial de la editorial) para recibir ahí tanto los mensajes de contacto como las postulaciones de autores.
 - El plan gratuito de Netlify permite 100 envíos de formulario por mes (más que suficiente para empezar).
+
+> ⚠️ **Importante — por qué un formulario puede parecer que "no funciona":** los formularios de Netlify **solo funcionan una vez que el sitio está publicado en Netlify** (no funcionan si abres los archivos `.html` directamente en tu computadora con doble clic, ni en una vista previa local). Si al probarlo el formulario no te redirige a la página de gracias, confirma que: (1) ya subiste la última versión de la carpeta a Netlify, y (2) estás probando desde el enlace `https://tu-sitio.netlify.app`, no desde un archivo local.
+
+### El flujo de "Publica tu libro" ya incluye el envío del manuscrito
+
+El formulario de postulación **no adjunta el manuscrito** (los archivos de manuscritos suelen ser muy pesados para un formulario web). En su lugar, el flujo es:
+
+1. El autor llena el formulario con los datos de su proyecto y hace clic en "Enviar postulación".
+2. Es redirigido automáticamente a `gracias-publicacion.html`, una página que le indica claramente que debe enviar el archivo completo de su manuscrito (Word o PDF) por correo a **`mavlexisbooks@gmail.com`**, incluyendo su nombre y el título de la obra en el asunto.
+3. El mismo aviso y correo también aparecen dentro del formulario, justo antes del botón de enviar, para que quede claro incluso si el autor no llega a ver la página de confirmación.
+
+Si prefieres usar otro correo para recibir manuscritos, reemplaza `mavlexisbooks@gmail.com` en dos archivos: `publica-tu-libro.html` y `gracias-publicacion.html` (usa "Buscar y reemplazar" en tu editor de texto).
 
 ---
 
@@ -79,7 +91,7 @@ Solo se muestran en la biblioteca las categorías que ya tienen al menos un libr
 
 Antes de anunciar el sitio, revisa estos puntos:
 
-- **Correos y teléfono**: en `js/main.js` (pie de página) y en `contacto.html` aparecen datos de ejemplo (`info@mavlexisbooks.com`, `+507 0000-0000`). Reemplázalos por los datos reales de la editorial.
+- **Correo y teléfono**: ya están configurados con los datos reales de la editorial (`mavlexisbooks@gmail.com` y `+507 6594-3848`) en `js/main.js` (pie de página), `contacto.html`, `publica-tu-libro.html`, `gracias-publicacion.html` e `index.html`. Si en algún momento cambian, hay que actualizarlos en esos mismos archivos.
 - **Redes sociales**: los íconos de Facebook / Instagram / WhatsApp en el pie de página apuntan a `#` (sin destino). Edita los enlaces en `js/main.js`, dentro de la función `renderFooter()`.
 - **Título y autor de cada libro**: ya provienen directamente de la plantilla de Excel que llenaste, así que son los datos oficiales. Aun así, dale un vistazo rápido a `js/data.js` para confirmar que todo se vea bien (algunos títulos que venían en MAYÚSCULAS en el Excel los convertí a un formato más legible; verifica que no se haya alterado ningún nombre propio).
 - **Portadas 8 y 17**: eran el mismo libro duplicado ("Gestión y Dirección del Capital Humano", misma fecha e ISBN). Ya eliminé el duplicado (libro-017) del catálogo; solo queda una vez, con la portada 8.
