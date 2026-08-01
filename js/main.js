@@ -10,7 +10,17 @@ document.addEventListener('DOMContentLoaded', () => {
     toggle.addEventListener('click', () => links.classList.toggle('open'));
     links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => links.classList.remove('open')));
   }
+  setHeaderHeightVar();
+  window.addEventListener('resize', setHeaderHeightVar);
+  initMailtoForms();
 });
+
+// ---------- Alto real del header (para que el menú móvil siempre calce bien) ----------
+function setHeaderHeightVar(){
+  const header = document.querySelector('.site-header');
+  if (!header) return;
+  document.documentElement.style.setProperty('--header-h', header.offsetHeight + 'px');
+}
 
 // ---------- Reveal on scroll ----------
 function initReveal(){
@@ -159,3 +169,72 @@ function closeBookModal(){
   document.removeEventListener('keydown', escCloseModal);
 }
 function escCloseModal(e){ if (e.key === 'Escape') closeBookModal(); }
+
+// =========================================================================
+// Envío de formularios — funciona en cualquier hosting (Vercel, Netlify,
+// GitHub Pages, etc.) porque no depende de ningún servidor: arma un correo
+// con los datos y lo abre en el programa de correo del visitante.
+// =========================================================================
+const CAMPO_ETIQUETA = {
+  nombre: 'Nombre',
+  correo: 'Correo electrónico',
+  telefono: 'Teléfono / WhatsApp',
+  institucion: 'Universidad o institución',
+  titulo: 'Título tentativo del libro',
+  area: 'Área del conocimiento',
+  mensaje: 'Mensaje',
+  asunto: 'Asunto',
+  autoria: 'Confirma autoría original'
+};
+
+function initMailtoForms(){
+  document.querySelectorAll('form[data-mailto]').forEach(form => {
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      // trampa anti-spam simple: si el campo oculto viene lleno, no hacemos nada
+      const honeypot = form.querySelector('input[name="bot-field"]');
+      if (honeypot && honeypot.value) return;
+
+      // validación nativa del navegador (campos "required", tipo email, etc.)
+      if (!form.reportValidity()) return;
+
+      const to = form.dataset.mailto;
+      const subject = form.dataset.subject || 'Nuevo mensaje desde el sitio web';
+      const redirect = form.dataset.redirect || '';
+
+      const fd = new FormData(form);
+      let body = '';
+      fd.forEach((value, key) => {
+        if (key === 'bot-field' || key === 'form-name' || !value) return;
+        if (key === 'autoria') value = 'Sí, confirmado';
+        const etiqueta = CAMPO_ETIQUETA[key] || key;
+        body += `${etiqueta}: ${value}\n\n`;
+      });
+
+      const mailtoUrl = `mailto:${to}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+      // Intentamos abrir el cliente de correo del visitante...
+      window.location.href = mailtoUrl;
+
+      // ...y en paralelo mostramos/dirigimos a la confirmación en pantalla,
+      // sin depender de ningún servidor.
+      if (redirect) {
+        setTimeout(() => { window.location.href = redirect; }, 300);
+      } else {
+        showInlineFormSuccess(form);
+      }
+    });
+  });
+}
+
+function showInlineFormSuccess(form){
+  const card = form.closest('.form-card') || form;
+  card.innerHTML = `
+    <div class="form-success">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>
+      <h3>¡Listo! Tu programa de correo se está abriendo</h3>
+      <p>Se abrió un borrador con tu mensaje ya redactado, listo para enviarlo. Si no ves nada abrirse, escríbenos directamente a <b>mavlexisbooks@gmail.com</b>.</p>
+    </div>
+  `;
+}

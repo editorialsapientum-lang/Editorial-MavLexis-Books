@@ -20,28 +20,34 @@ Cada vez que quieras cambiar algo (agregar un libro, cambiar un texto), edita lo
 
 > **Alternativa recomendada a futuro:** conectar el sitio a una cuenta de GitHub para que las actualizaciones sean automáticas. Si en algún momento quieren dar ese paso, contáctenme y les preparo esa configuración.
 
+> 📌 **Si ya estás usando Vercel:** este sitio funciona igual de bien en Vercel que en Netlify (los formularios ya no dependen de ninguno de los dos, ver sección 2). Si tu proyecto en Vercel está conectado a un repositorio de GitHub, para publicar esta versión corregida solo necesitas subir (hacer "commit" y "push", o simplemente arrastrar los archivos nuevos si usas la interfaz web de GitHub) estos archivos actualizados a ese repositorio — Vercel detectará el cambio y volverá a desplegar el sitio automáticamente en 1 o 2 minutos.
+
 ---
 
-## 2. Los formularios (contacto y postulación de libros)
+## 2. Cómo funcionan los formularios (contacto y postulación de libros)
 
-Las páginas **Contacto** y **Publica tu libro** usan **Netlify Forms**, que ya viene incluido gratis:
+Los formularios de **Contacto** y **Publica tu libro** funcionan en **cualquier hosting** (Vercel, Netlify, GitHub Pages, o el que uses) sin necesidad de configurar nada adicional, porque no dependen de ningún servidor:
 
-- No necesitas configurar nada: apenas subas el sitio, Netlify detecta los formularios automáticamente.
-- Los mensajes que envíen los visitantes llegarán al panel de Netlify: **Site → Forms**.
-- Para recibir los mensajes también por correo: **Site settings → Forms → Form notifications → Add notification → Email notification**, y coloca `mavlexisbooks@gmail.com` (el correo oficial de la editorial) para recibir ahí tanto los mensajes de contacto como las postulaciones de autores.
-- El plan gratuito de Netlify permite 100 envíos de formulario por mes (más que suficiente para empezar).
+- Cuando alguien completa un formulario y presiona "Enviar", el sitio arma automáticamente un correo con todos los datos y abre el programa de correo del visitante (Gmail, Outlook, Mail, etc.) con el mensaje ya redactado y listo para enviar a **`mavlexisbooks@gmail.com`**.
+- Después, el visitante ve una página de confirmación (o un mensaje en pantalla) indicando que su correo se está abriendo.
+- Todo esto ocurre en el navegador del visitante — no requiere ninguna cuenta, servicio externo, ni configuración en Netlify o Vercel. Por eso funciona igual sin importar dónde publiques el sitio.
 
-> ⚠️ **Importante — por qué un formulario puede parecer que "no funciona":** los formularios de Netlify **solo funcionan una vez que el sitio está publicado en Netlify** (no funcionan si abres los archivos `.html` directamente en tu computadora con doble clic, ni en una vista previa local). Si al probarlo el formulario no te redirige a la página de gracias, confirma que: (1) ya subiste la última versión de la carpeta a Netlify, y (2) estás probando desde el enlace `https://tu-sitio.netlify.app`, no desde un archivo local.
+> ⚠️ **Un solo requisito:** el visitante debe tener un programa de correo configurado en su computadora o celular (Gmail, Outlook, Apple Mail, etc.). Esto es válido para la gran mayoría de las personas. Si alguien no tiene uno configurado, el botón "Enviar" no podrá abrir nada — en ese caso, dejamos visible el correo `mavlexisbooks@gmail.com` en varias partes del sitio para que puedan escribir manualmente.
+
+### ¿Por qué antes salía "HTTP ERROR 405"?
+
+La versión anterior usaba **Netlify Forms**, una función que solo existe cuando el sitio está publicado específicamente en Netlify. Al publicar el sitio en **Vercel** (u otro proveedor), el formulario intentaba enviar los datos directamente a la página, y como Vercel no acepta ese tipo de envío en una página estática, aparecía el error 405. La solución actual ya no depende de ningún proveedor en particular, así que este error no debería volver a aparecer sin importar dónde publiques el sitio.
 
 ### El flujo de "Publica tu libro" ya incluye el envío del manuscrito
 
-El formulario de postulación **no adjunta el manuscrito** (los archivos de manuscritos suelen ser muy pesados para un formulario web). En su lugar, el flujo es:
+El formulario de postulación **no adjunta el manuscrito** (los archivos de manuscritos suelen ser muy pesados para enviarlos así). En su lugar, el flujo es:
 
 1. El autor llena el formulario con los datos de su proyecto y hace clic en "Enviar postulación".
-2. Es redirigido automáticamente a `gracias-publicacion.html`, una página que le indica claramente que debe enviar el archivo completo de su manuscrito (Word o PDF) por correo a **`mavlexisbooks@gmail.com`**, incluyendo su nombre y el título de la obra en el asunto.
-3. El mismo aviso y correo también aparecen dentro del formulario, justo antes del botón de enviar, para que quede claro incluso si el autor no llega a ver la página de confirmación.
+2. Se abre su programa de correo con un mensaje ya redactado hacia `mavlexisbooks@gmail.com`, y es dirigido a una página de confirmación (`gracias-publicacion.html`).
+3. Esa página le indica claramente que debe enviar el archivo completo de su manuscrito (Word o PDF) por correo a **`mavlexisbooks@gmail.com`**, incluyendo su nombre y el título de la obra en el asunto.
+4. El mismo aviso también aparece dentro del propio formulario, justo antes del botón de enviar.
 
-Si prefieres usar otro correo para recibir manuscritos, reemplaza `mavlexisbooks@gmail.com` en dos archivos: `publica-tu-libro.html` y `gracias-publicacion.html` (usa "Buscar y reemplazar" en tu editor de texto).
+Si prefieres usar otro correo, reemplaza `mavlexisbooks@gmail.com` en estos archivos: `contacto.html`, `index.html`, `publica-tu-libro.html` y `gracias-publicacion.html` (usa "Buscar y reemplazar" en tu editor de texto — aparece dentro del atributo `data-mailto="..."` de cada formulario, y también en los textos visibles).
 
 ---
 
