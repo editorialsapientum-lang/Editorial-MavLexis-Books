@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contacto | Editorial MavLexis Books</title>
+<meta name="description" content="Ponte en contacto con Editorial MavLexis Books para consultas, publicación de libros o adquisición de nuestro catálogo.">
+<link rel="icon" type="image/png" href="assets/img/favicon-32.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap nav">
+    <a href="index.html" class="brand">
+      <img src="assets/img/logo-mark.png" alt="Editorial MavLexis Books">
+      <div class="brand-text">MavLexis<span>Editorial Books</span></div>
+    </a>
+    <nav class="nav-links" id="navLinks">
+      <a href="index.html">Inicio</a>
+      <a href="catalogo.html">Biblioteca</a>
+      <a href="publica-tu-libro.html">Publica tu libro</a>
+      <a href="nosotros.html">Quiénes somos</a>
+      <a href="contacto.html" class="active">Contacto</a>
+    </nav>
+    <div class="nav-cta">
+      <a href="publica-tu-libro.html" class="btn btn-gold btn-sm"><span>Publica con nosotros</span></a>
+      <button class="nav-toggle" id="navToggle" aria-label="Abrir menú">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<section class="page-hero">
+  <div class="wrap">
+    <span class="breadcrumb">Hablemos</span>
+    <h1>Contáctanos</h1>
+    <p class="lead">¿Tienes preguntas sobre publicación, quieres adquirir un libro de nuestro catálogo o buscas una alianza académica? Escríbenos.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap grid-2">
+    <div class="form-card reveal">
+      <form name="contacto" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/gracias.html">
+        <input type="hidden" name="form-name" value="contacto">
+        <p style="display:none;"><label>No llenar: <input name="bot-field"></label></p>
+
+        <div class="form-row">
+          <div class="field">
+            <label for="nombre">Nombre *</label>
+            <input type="text" id="nombre" name="nombre" required>
+          </div>
+          <div class="field">
+            <label for="correo">Correo electrónico *</label>
+            <input type="email" id="correo" name="correo" required>
+          </div>
+        </div>
+        <div class="field">
+          <label for="asunto">Asunto</label>
+          <select id="asunto" name="asunto">
+            <option>Quiero publicar un libro</option>
+            <option>Quiero adquirir un libro del catálogo</option>
+            <option>Alianzas académicas</option>
+            <option>Otra consulta</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="mensaje">Mensaje *</label>
+          <textarea id="mensaje" name="mensaje" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-gold">Enviar mensaje</button>
+      </form>
+    </div>
+
+    <div class="reveal">
+      <span class="eyebrow">Información de contacto</span>
+      <h2>Estamos para ayudarte</h2>
+      <p class="lead">Escríbenos por correo o por cualquiera de nuestras redes. Respondemos en un plazo de 1 a 2 días hábiles.</p>
+      <div class="feature-card" style="margin-top:1.6em;">
+        <h3 style="margin-bottom:1em;">Datos de contacto</h3>
+        <p><b>Correo:</b> info@mavlexisbooks.com</p>
+        <p><b>Publicaciones:</b> publica@mavlexisbooks.com</p>
+        <p><b>Teléfono / WhatsApp:</b> +507 0000-0000</p>
+        <p class="mb-0"><b>Ubicación:</b> Panamá</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer" id="footer"></footer>
+
+<script src="js/data.js"></script>
+<script src="js/main.js"></script>
+<script>
+  renderFooter();
+  initReveal();
+
+  // Si venimos del catálogo con un asunto predefinido, lo prellenamos
+  const params = new URLSearchParams(window.location.search);
+  if (params.get('asunto')) {
+    const sel = document.getElementById('asunto');
+    const mensaje = document.getElementById('mensaje');
+    mensaje.value = decodeURIComponent(params.get('asunto').replace(/\+/g,' ')) + '\n\n';
+  }
+</script>
+</body>
+</html>

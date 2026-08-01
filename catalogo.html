@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Biblioteca y catálogo | Editorial MavLexis Books</title>
+<meta name="description" content="Explora el catálogo completo de Editorial MavLexis Books y su sello asociado Sapientum: libros académicos organizados por área del conocimiento.">
+<link rel="icon" type="image/png" href="assets/img/favicon-32.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap nav">
+    <a href="index.html" class="brand">
+      <img src="assets/img/logo-mark.png" alt="Editorial MavLexis Books">
+      <div class="brand-text">MavLexis<span>Editorial Books</span></div>
+    </a>
+    <nav class="nav-links" id="navLinks">
+      <a href="index.html">Inicio</a>
+      <a href="catalogo.html" class="active">Biblioteca</a>
+      <a href="publica-tu-libro.html">Publica tu libro</a>
+      <a href="nosotros.html">Quiénes somos</a>
+      <a href="contacto.html">Contacto</a>
+    </nav>
+    <div class="nav-cta">
+      <a href="publica-tu-libro.html" class="btn btn-gold btn-sm"><span>Publica con nosotros</span></a>
+      <button class="nav-toggle" id="navToggle" aria-label="Abrir menú">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<section class="page-hero">
+  <div class="wrap">
+    <span class="breadcrumb">Biblioteca digital</span>
+    <h1>Nuestra biblioteca</h1>
+    <p class="lead">Explora el catálogo completo de Editorial MavLexis Books y de nuestro sello asociado Sapientum. Filtra por área del conocimiento o busca por título y autor.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+
+    <div class="book-toolbar">
+      <div class="search-box">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+        <input type="text" id="searchInput" placeholder="Buscar por título o autor…">
+      </div>
+      <div class="sello-toggle" id="selloToggle">
+        <button data-sello="todos" class="active">Todos los sellos</button>
+        <button data-sello="mavlexis">MavLexis Books</button>
+        <button data-sello="sapientum">Sapientum</button>
+      </div>
+    </div>
+
+    <div class="filter-row" id="categoryFilters">
+      <button class="chip active" data-cat="todas">Todas las categorías</button>
+    </div>
+
+    <p id="resultCount" style="color:var(--muted); font-size:.9rem; margin-bottom:1.4em;"></p>
+
+    <div id="librarySections"></div>
+
+    <div class="empty-state" id="emptyState" style="display:none;">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M4 19.5V6a2 2 0 012-2h12a2 2 0 012 2v13.5M4 19.5A2.5 2.5 0 016.5 17H20"/></svg>
+      <p>No encontramos libros que coincidan con tu búsqueda.<br>Intenta con otro término o quita algún filtro.</p>
+    </div>
+
+  </div>
+</section>
+
+<section class="section-alt">
+  <div class="wrap">
+    <div class="cta-band reveal">
+      <div>
+        <h2>¿No encuentras el área que buscas?</h2>
+        <p>Nuestro catálogo crece cada mes. Si eres autor y tu manuscrito encaja en una nueva área del conocimiento, conversemos.</p>
+      </div>
+      <a href="publica-tu-libro.html" class="btn btn-gold">Publica tu libro</a>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer" id="footer"></footer>
+
+<div class="modal-overlay" id="modalOverlay"></div>
+
+<script src="js/data.js"></script>
+<script src="js/main.js"></script>
+<script src="js/catalogo.js"></script>
+<script>
+  renderFooter();
+  initReveal();
+</script>
+</body>
+</html>
